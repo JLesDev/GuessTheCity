@@ -1,0 +1,280 @@
+:root {
+    --bg-color: rgb(62, 62, 62);
+    --bg-color-2: #ededed;
+    --fg-color: #000000;
+    --splash-color: #eeeef8;
+    --hr-color: #000000;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: rgb(70, 64, 65);
+      --bg-color-2: #1f1f21;
+      --fg-color: #ffffff;
+      --splash-color: #2f2f33;
+      --hr-color: #ffffff;
+    }
+  }
+  
+  .setSearch{
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgb(244, 233, 215);
+    padding: 10px;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+}
+
+.buttons{
+
+  background-color: rgb(244, 233, 215);
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+  html {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-family: sans-serif;
+    color: var(--fg-color);
+    background-color: var(--bg-color);
+  }
+  
+  h1 {
+    text-align: center;
+    color: rgb(244, 233, 215);
+  }
+
+  h2 {
+    text-align: center;
+    color: rgb(244, 233, 215);
+  }
+  
+  p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #135eff;
+  }
+  
+  hr {
+    border: 0;
+    clear: both;
+    display: block;
+    width: 90%;
+    background-color: var(--hr-color);
+    height: 0.2rem;
+  }
+
+  #feels-div {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+  
+  #game-board {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .title{
+    color: white;
+  }
+  
+  .letter-box {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+  
+    border: 2px solid #6c6c6c;
+    border-radius: 3px;
+  
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  #readMoreButt {
+
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2px;
+    
+      border: 2px solid yellowgreen;
+      border-radius: 3px;
+    
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    
+  }
+  
+  .filled-box {
+    border: 2px solid var(--fg-color);
+  }
+  
+  /*
+  .filled-box {
+    border: 2px solid var(--fg-color);
+  }
+  */
+
+.centre {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+  
+  .letter-row {
+    display: flex;
+  }
+  
+  #keyboard-cont {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #keyboard-cont div {
+    display: flex;
+    margin: 4px 0;
+  }
+  
+  
+  .keyboard-button {
+    padding: 1rem;
+    margin: 0 4px;
+  
+    font-size: 1rem;
+    font-weight: 700;
+  
+    cursor: pointer;
+    text-transform: uppercase;
+  
+    color: #000000;
+    background-color: #e3e3e9;
+    border: 0;
+    border-radius: 4px;
+  }
+  
+  
+  
+  
+  #splash {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    height: 65%;
+  
+    margin: auto;
+    padding: 1rem;
+    overflow: scroll;
+  
+    text-align: center;
+    line-height: 1.5;
+    align-content: center;
+    align-items: center;
+  
+    background: var(--splash-color);
+    border: 1px solid var(--bg-color-2);
+    border-radius: 10px;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+  }
+  
+  
+  #startButton {
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0.5rem auto;
+    padding: 0.2rem;
+  
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #000000;
+  
+    width: 6rem;
+    min-height: 2.5rem;
+  
+    border: 0;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 800px) {
+    #keyboard-cont div {
+      width: 100%;
+    }
+  
+    .keyboard-button {
+      flex: 1;
+      margin: 0 2px;
+      height: 3rem;
+  
+      font-size: 0.9rem;
+      padding: 0.2rem;
+    }
+
+    #myButton {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+    #keyboard-cont {
+      margin: 0.3rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #splash {
+      width: 95%;
+    }
+  
+  }
