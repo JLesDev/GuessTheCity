@@ -7,19 +7,19 @@ function onLoad(){
         city = "Brisbane"
         console.log("Brisbane...");
         console.log(city);
-        document.getElementById('theGuess').src = "/THIS IS BRISBANE.png";
+        document.getElementById('theGuess').src = "https://i.ibb.co/4RWfG5rZ/THIS-IS-BRISBANE.png";
     }
     else if (rands > 0.4 && rands < 0.7){
         city = "Hobart"
         console.log("Hobart...");
         console.log(city);
-        document.getElementById('theGuess').src = "/THIS IS HOBART.png";
+        document.getElementById('theGuess').src = "https://i.ibb.co/BKYp2xR7/THIS-IS-HOBART.png";
     }
     else if (rands > 0 && rands < 0.4){
         city = "Zhaoqing"
         console.log("Zhaoqing...");
         console.log(city);
-        document.getElementById('theGuess').src = "/THIS IS ZHAOQING.png";
+        document.getElementById('theGuess').src = "https://i.ibb.co/HLZdGhkB/THIS-IS-ZHAOQING.png";
     }
 }
 
