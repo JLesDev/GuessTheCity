@@ -1,1 +1,1 @@
-This application/system is so good.
+This application is so good.
