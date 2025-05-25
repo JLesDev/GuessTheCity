@@ -1,5 +1,4 @@
 globalThis.won = 0;
-globalThis.cities2 = {};
 globalThis.cities = new Map;
 
 cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
@@ -10,86 +9,20 @@ cities.set('Adelaide', ['https://i.ibb.co/2YyKtSBj/adelaide1.png','https://i.ibb
 cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nMdnq073/perth2.png','https://i.ibb.co/7xH4mRS2/perth3.png']);
 cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
-cities2['Brisbane'] = ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png'];
-cities2['Hobart'] = ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png'];
-cities2['Zhaoqing'] = ['','',''];
-
 function onLoad(){
     globalThis.city = "";
     globalThis.guesses = 0;
-    var rands = Math.random();
-
-    console.log("loaded...");
+    var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
+    var rands = Math.floor(Math.random()*7);
     console.log(rands);
-    if(rands > 0.84 && rands < 1){
-        city = "Brisbane"
-        console.log("Brisbane...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else if (rands > 0.70 && rands < 0.84){
-        city = "Hobart"
-        console.log("Hobart...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else if (rands > 0.56 && rands < 0.70){
-        city = "Zhaoqing"
-        console.log("Zhaoqing...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else if (rands > 0.42 && rands < 0.56){
-        city = "New York City"
-        console.log("New York City...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else if (rands > 0.28 && rands < 0.42){
-        city = "Adelaide"
-        console.log("Adelaide...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else if (rands > 0.14 && rands < 0.28){
-        city = "Perth"
-        console.log("Perth...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else if (rands > 0 && rands < 0.14){
-        city = "Dublin"
-        console.log("Dublin...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
-    else{
-        city = "Adelaide"
-        console.log("Adelaide...");
-        console.log(city);
-        //document.getElementById('theGuess').src = "https://i.imgur.com/y2UyjhU.png";
-    }
+    city = citiesList[rands];
+    console.log("loaded...");
     document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
 }
 
 window.onload = function() {
     onLoad();
   };
-
-function getCity(){
-    console.log("City: " + document.getElementById('theGuess').src);
-    if(document.getElementById('theGuess').src === "http://127.0.0.1:5500/THIS%20IS%20HOBART.png"){
-        return "Hobart";
-    }
-    else if (document.getElementById('theGuess').src === "http://127.0.0.1:5500/THIS%20IS%BRISBANE.png"){
-        return "Brisbane";
-    }
-    // else{
-    //     return "Zhaoqing";
-    // }
-    
-    return "";
-}
 
 function hideSplash(){
     let splash = document.getElementById('splash');
@@ -135,14 +68,10 @@ function check(){
     var query = document.getElementById('test').value;
     console.log("Checking");
     console.log(query);
-    console.log(getCity());
     if(query.toLowerCase() === city.toLowerCase()){
-        // alert("Correct");
         document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
-        // location.reload();
-        // onLoad();
     }
     else{
         var guessVar = "guess" + guesses;
@@ -150,5 +79,4 @@ function check(){
         Splash("Wrong");
     }
     nextGuess();
-
 }
