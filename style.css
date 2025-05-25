@@ -15,26 +15,104 @@
       --hr-color: #ffffff;
     }
   }
+
+  #test{
+    display: grid;
+    justify-content: center;
+    align-items: stretch;
+    margin: auto;
+    width: 100%;
+    border: 3px solid rgb(244, 233, 215);
+    padding: 10px;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+  }
   
   .setSearch{
+    display: grid;
+    justify-content: center;
+    align-items: stretch;
     margin: auto;
     width: 50%;
     border: 3px solid rgb(244, 233, 215);
     padding: 10px;
     margin-bottom: 0.2rem;
     margin-top: 0.2rem;
+    
+}
+
+/* .box{
+  margin: auto;
+  width: 10%;
+  height: 10%;
+  border: 3px solid rgb(244, 233, 215);
+  padding: 10px;
+  /* margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
+  margin-left: 0rem; 
+  
+} */
+
+.box{
+  width: 35px; 
+  height: 35px; 
+  border: 2px solid #f5e5d4; 
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.box-div{
+  display: flex; 
+  gap: 10px;
+  align-items: stretch;
+}
+
+.guesses{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 50%;
+  border: 3px solid rgb(244, 233, 215);
+  padding: 10px;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
+ 
+}
+.guess-val{
+  margin: auto;
+  margin-top: 2px;
+  margin-left: 5px;
+  align-items: center;
+}
+
+.float-text{
+  /* float: right; */
+  margin-right: 10px; 
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+    color: rgb(244, 233, 215);
 }
 
 .buttons{
-
+  border: 3px solid rgb(244, 233, 215);
   background-color: rgb(244, 233, 215);
-  border: none;
   color: rgb(0, 0, 0);
-  padding: 15px 32px;
+  height: 100%;
+  
+  padding: 12px 39px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
+  font-weight: bold;
+}
+
+.buttons:hover{
+  border: 3px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  background-color:rgb(231, 182, 103);
 }
 
   html {
