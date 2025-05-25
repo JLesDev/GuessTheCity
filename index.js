@@ -7,8 +7,8 @@ async function getCities(){
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
-    // return  citiesJSON["cities"];
-    return JSON.parse(citiesJSON["cities"]);
+    return  citiesJSON["cities"];
+    // return JSON.parse(citiesJSON["cities"]);
 }
 
 cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
