@@ -1,5 +1,5 @@
 globalThis.won = 0;
-globalThis.cities = new Map;
+// globalThis.cities = new Map;
 globalThis.city = "";
 globalThis.guesses = 0;
 
@@ -10,16 +10,15 @@ async function getCities(){
     const response = await fetch(request);
     let citiesJSON = await response.json();
     return  citiesJSON["cities"];
-    // return JSON.parse(citiesJSON["cities"]);
 }
 
-cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
-cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
-cities.set('Zhaoqing', ['https://i.ibb.co/tMxvBR0Y/zhaoqing1.png','https://i.ibb.co/fV9fLQ9R/zhaoqing2.png','https://i.ibb.co/N2mFL4vJ/zhaoqing3.png']);
-cities.set('New York City', ['https://i.ibb.co/d0WsKfhw/newyork1.png','https://i.ibb.co/CphdpH5M/newyork2.png','https://i.ibb.co/htgtSDw/newyork3.png']);
-cities.set('Adelaide', ['https://i.ibb.co/2YyKtSBj/adelaide1.png','https://i.ibb.co/pBdPL1Ym/adelaide2.png','https://i.ibb.co/67MHdGHY/adelaide3.png']);
-cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nMdnq073/perth2.png','https://i.ibb.co/7xH4mRS2/perth3.png']);
-cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
+// cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
+// cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
+// cities.set('Zhaoqing', ['https://i.ibb.co/tMxvBR0Y/zhaoqing1.png','https://i.ibb.co/fV9fLQ9R/zhaoqing2.png','https://i.ibb.co/N2mFL4vJ/zhaoqing3.png']);
+// cities.set('New York City', ['https://i.ibb.co/d0WsKfhw/newyork1.png','https://i.ibb.co/CphdpH5M/newyork2.png','https://i.ibb.co/htgtSDw/newyork3.png']);
+// cities.set('Adelaide', ['https://i.ibb.co/2YyKtSBj/adelaide1.png','https://i.ibb.co/pBdPL1Ym/adelaide2.png','https://i.ibb.co/67MHdGHY/adelaide3.png']);
+// cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nMdnq073/perth2.png','https://i.ibb.co/7xH4mRS2/perth3.png']);
+// cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
 async function onLoad(){
     try {
@@ -56,8 +55,9 @@ function nextGuess(){
         onLoad();
     }
     else{
-        console.log(cities.get(city, guesses)[guesses]);
-        document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
+        // Debugging only: console.log(cities.get(city, guesses)[guesses]);
+        document.getElementById('theGuess').src = cityL[rands].Links[guesses];
+        // Old: document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
     }
 }
 
@@ -88,7 +88,7 @@ function check(){
     console.log("Checking");
     console.log(query);
     var guessVar = "guess" + guesses;
-    if(query.toLowerCase() == cityL[rands].toLowerCase()){
+    if(query.toLowerCase() == cityL[rands].toString().toLowerCase()){
         document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
