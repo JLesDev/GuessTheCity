@@ -12,9 +12,10 @@ globalThis.guesses = 0;
 // cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
 async function getCities(){
-    const baseURL = window.location.origin;
-    const requestURL = baseURL + "/GuessTheCity/cities.json";
-    // For local hosting: const requestURL = "http://127.0.0.1:5500/cities.json";
+    // const baseURL = window.location.origin;
+    // const requestURL = baseURL + "/GuessTheCity/cities.json";
+    // For local hosting: 
+    const requestURL = "http://127.0.0.1:5500/cities.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
@@ -57,15 +58,10 @@ function hideSplash(){
 }
 
 function nextGuess(){
-    if(guesses == 3){
-        location.reload();
-        callOnLoad();
-    }
-    else{
-        // Debugging only: console.log(cities.get(city, guesses)[guesses]);
-        document.getElementById('theGuess').src = cityL[rands].Links[guesses];
-        // Old: document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
-    }
+    // Debugging only: console.log(cities.get(city, guesses)[guesses]);
+    document.getElementById('theGuess').src = cityL[rands].Links[guesses];
+    // Old: document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
+
 }
 
 function Splash(right){
@@ -92,6 +88,10 @@ function Splash(right){
 
 function check(){
     guesses = guesses + 1;
+    if(guesses == 3){
+        location.reload();
+        callOnLoad();
+    }
     var query = document.getElementById('test').value;
     console.log("Checking");
     console.log(query);
@@ -101,12 +101,17 @@ function check(){
         document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
+        nextGuess();
+        return;
     }
     else{
         document.getElementById(guessVar).innerHTML = "❌";
-        Splash("Wrong");
+        if(guesses == 1){
+            Splash("Wrong");
+            nextGuess();
+            return;
+        }
     }
-    nextGuess();
 }
 
 // document.addEventListener("keyup", (e) => {
