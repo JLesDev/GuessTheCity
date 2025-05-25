@@ -8,7 +8,7 @@ async function getCities(){
     const response = await fetch(request);
     let citiesJSON = await response.json();
     citiesList = citiesJSON["cities"];
-    return citiesList
+    return citiesList;
 }
 
 
@@ -20,7 +20,7 @@ cities.set('Adelaide', ['https://i.ibb.co/2YyKtSBj/adelaide1.png','https://i.ibb
 cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nMdnq073/perth2.png','https://i.ibb.co/7xH4mRS2/perth3.png']);
 cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
-function onLoad(){
+async function onLoad(){
     globalThis.city = "";
     globalThis.guesses = 0;
     // var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
@@ -45,9 +45,9 @@ function onLoad(){
     //document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
 }
 
-window.onload = function() {
-    onLoad();
-  };
+window.onload = () => {
+    onLoad(); 
+};
 
 function hideSplash(){
     let splash = document.getElementById('splash');
