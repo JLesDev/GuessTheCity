@@ -2,6 +2,7 @@ globalThis.won = 0;
 globalThis.cities = new Map;
 globalThis.city = "";
 globalThis.guesses = 0;
+globalThis.rands = Math.floor(Math.random() * cityL.length);
 
 async function getCities(){
     const baseURL = window.location.origin;
@@ -24,8 +25,6 @@ cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/
 async function onLoad(){
     try {
         globalThis.cityL = await getCities();
-
-        const rands = Math.floor(Math.random() * cityL.length);
 
         city = cityL[rands];
         // For debugging: console.log("Loaded city:", city);
