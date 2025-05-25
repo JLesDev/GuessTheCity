@@ -10,9 +10,15 @@ cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nM
 cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
 function onLoad(){
+    const baseURL = window.location.origin;
+    const requestURL = baseURL + "/GuessTheCity/cities.json";
+    const request = new Request(requestURL);
+    const response = await fetch(request);
+    let citiesJSON = await response.json();
+    let citiesList = wordsJSON["cities"];
     globalThis.city = "";
     globalThis.guesses = 0;
-    var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
+    // var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
     var rands = Math.floor(Math.random()*7);
     console.log(rands);
     city = citiesList[rands];
@@ -79,4 +85,5 @@ function check(){
         Splash("Wrong");
     }
     nextGuess();
+
 }
