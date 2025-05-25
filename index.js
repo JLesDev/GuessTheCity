@@ -7,9 +7,9 @@ async function getCities(){
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
-    return  citiesJSON["cities"];
+    // return  citiesJSON["cities"];
+    return JSON.parse(citiesJSON["cities"]);
 }
-
 
 cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
 cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
@@ -22,26 +22,19 @@ cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/
 async function onLoad(){
     globalThis.city = "";
     globalThis.guesses = 0;
-    // var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
-    var rands = Math.floor(Math.random()*7);
-    console.log(rands);
-    // cityL = getCities().await();
-    // city = cityL[rands];
     try {
         const cityL = await getCities();
 
         const rands = Math.floor(Math.random() * cityL.length);
-        console.log(rands);
 
         city = cityL[rands];
-        console.log("Loaded city:", city);
+        // For debugging: console.log("Loaded city:", city);
 
-        document.getElementById('theGuess').src = cities.get(city)[guesses];
+        document.getElementById('theGuess').src = cityL[rands].Links[guesses];// cities.get(city)[guesses];
     } catch (error) {
         console.error("Error loading cities:", error);
     }
-    console.log("loaded...");
-    //document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
+    console.log("Loaded...");
 }
 
 window.onload = () => {
@@ -82,6 +75,8 @@ function Splash(right){
         splash.style.height = "20rem";
         document.getElementById('splash-text').innerHTML = "You got the answer wrong.";
         document.getElementById('startButton').innerHTML = "Continue";
+        document.getElementById('test').innerHTML = "";
+        document.getElementById('test').placeholder = "Enter answer...";
         document.getElementById('give-up').innerHTML = "Give Up.";
         document.getElementById('next-steps').innerHTML = "Take a deep breath. Think harder next time. No room for error.";
     }
@@ -92,16 +87,15 @@ function check(){
     var query = document.getElementById('test').value;
     console.log("Checking");
     console.log(query);
+    var guessVar = "guess" + guesses;
     if(query.toLowerCase() === city.toLowerCase()){
         document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
     }
     else{
-        var guessVar = "guess" + guesses;
         document.getElementById(guessVar).innerHTML = "❌";
         Splash("Wrong");
     }
     nextGuess();
-
 }
