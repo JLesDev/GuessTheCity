@@ -15,7 +15,7 @@ function onLoad(){
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
-    let citiesList = wordsJSON["cities"];
+    let citiesList = citiesJSON["cities"];
     globalThis.city = "";
     globalThis.guesses = 0;
     // var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
