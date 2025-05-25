@@ -1,11 +1,16 @@
 globalThis.won = 0;
 globalThis.cities = new Map;
-const baseURL = window.location.origin;
-const requestURL = baseURL + "/GuessTheCity/cities.json";
-const request = new Request(requestURL);
-const response = await fetch(request);
-let citiesJSON = await response.json();
-globalThis.citiesList = citiesJSON["cities"];
+
+async function getCities(){
+    const baseURL = window.location.origin;
+    const requestURL = baseURL + "/GuessTheCity/cities.json";
+    const request = new Request(requestURL);
+    const response = await fetch(request);
+    let citiesJSON = await response.json();
+    citiesList = citiesJSON["cities"];
+    return citiesList
+}
+
 
 cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
 cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
@@ -21,9 +26,23 @@ function onLoad(){
     // var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
     var rands = Math.floor(Math.random()*7);
     console.log(rands);
-    city = citiesList[rands];
+    // cityL = getCities().await();
+    // city = cityL[rands];
+    try {
+        const cityL = await getCities();
+
+        const rands = Math.floor(Math.random() * cityL.length);
+        console.log(rands);
+
+        city = cityL[rands];
+        console.log("Loaded city:", city);
+
+        document.getElementById('theGuess').src = cities.get(city)[guesses];
+    } catch (error) {
+        console.error("Error loading cities:", error);
+    }
     console.log("loaded...");
-    document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
+    //document.getElementById('theGuess').src = cities.get(city, guesses)[guesses];
 }
 
 window.onload = function() {
