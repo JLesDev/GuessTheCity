@@ -1,6 +1,3 @@
-
-// globalThis.cities = ["Brisbane", ];
-
 globalThis.won = 0;
 globalThis.cities2 = {};
 globalThis.cities = new Map;
@@ -113,6 +110,7 @@ function Splash(right){
     if(right == "Correct"){
         document.getElementById('splash-text').innerHTML = "You got the answer right.";
         document.getElementById('startButton').innerHTML = "Play again";
+        document.getElementById('give-up').innerHTML = "";
         document.getElementById('next-steps').innerHTML = "Do not get complacent. Do not rest. I'm proud of you, even for the little wins.";
     }
     else{
