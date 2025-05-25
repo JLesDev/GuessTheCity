@@ -1,5 +1,7 @@
 globalThis.won = 0;
 globalThis.cities = new Map;
+globalThis.city = "";
+globalThis.guesses = 0;
 
 async function getCities(){
     const baseURL = window.location.origin;
@@ -20,10 +22,8 @@ cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nM
 cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
 async function onLoad(){
-    globalThis.city = "";
-    globalThis.guesses = 0;
     try {
-        const cityL = await getCities();
+        globalThis.cityL = await getCities();
 
         const rands = Math.floor(Math.random() * cityL.length);
 
@@ -88,7 +88,7 @@ function check(){
     console.log("Checking");
     console.log(query);
     var guessVar = "guess" + guesses;
-    if(query.toLowerCase() === city.toLowerCase()){
+    if(query.toLowerCase() == cityL[rands].toLowerCase()){
         document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
