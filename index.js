@@ -1,5 +1,11 @@
 globalThis.won = 0;
 globalThis.cities = new Map;
+const baseURL = window.location.origin;
+const requestURL = baseURL + "/GuessTheCity/cities.json";
+const request = new Request(requestURL);
+const response = await fetch(request);
+let citiesJSON = await response.json();
+globalThis.citiesList = citiesJSON["cities"];
 
 cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
 cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
@@ -10,12 +16,6 @@ cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nM
 cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
 
 function onLoad(){
-    const baseURL = window.location.origin;
-    const requestURL = baseURL + "/GuessTheCity/cities.json";
-    const request = new Request(requestURL);
-    const response = await fetch(request);
-    let citiesJSON = await response.json();
-    let citiesList = citiesJSON["cities"];
     globalThis.city = "";
     globalThis.guesses = 0;
     // var citiesList = ["Brisbane","Hobart", "Zhaoqing", "New York City", "Adelaide", "Perth", "Dublin"];
