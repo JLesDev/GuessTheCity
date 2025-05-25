@@ -1,17 +1,8 @@
 globalThis.won = 0;
-// globalThis.cities = new Map;
 globalThis.city = "";
 globalThis.guesses = 0;
 
-async function getCities(){
-    const baseURL = window.location.origin;
-    const requestURL = baseURL + "/GuessTheCity/cities.json";
-    const request = new Request(requestURL);
-    const response = await fetch(request);
-    let citiesJSON = await response.json();
-    return  citiesJSON["cities"];
-}
-
+// globalThis.cities = new Map;
 // cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
 // cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
 // cities.set('Zhaoqing', ['https://i.ibb.co/tMxvBR0Y/zhaoqing1.png','https://i.ibb.co/fV9fLQ9R/zhaoqing2.png','https://i.ibb.co/N2mFL4vJ/zhaoqing3.png']);
@@ -19,6 +10,16 @@ async function getCities(){
 // cities.set('Adelaide', ['https://i.ibb.co/2YyKtSBj/adelaide1.png','https://i.ibb.co/pBdPL1Ym/adelaide2.png','https://i.ibb.co/67MHdGHY/adelaide3.png']);
 // cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nMdnq073/perth2.png','https://i.ibb.co/7xH4mRS2/perth3.png']);
 // cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
+
+async function getCities(){
+    const baseURL = window.location.origin;
+    const requestURL = baseURL + "/GuessTheCity/cities.json";
+    // For local hosting: const requestURL = "http://127.0.0.1:5500/cities.json";
+    const request = new Request(requestURL);
+    const response = await fetch(request);
+    let citiesJSON = await response.json();
+    return  citiesJSON["cities"];
+}
 
 async function onLoad(){
     try {
@@ -30,29 +31,35 @@ async function onLoad(){
         // For debugging: console.log("Loaded city:", city);
 
         document.getElementById('theGuess').src = cityL[rands].Links[guesses];// cities.get(city)[guesses];
+        console.log("Loaded...");
     } catch (error) {
         console.error("Error loading cities:", error);
-    }
-    console.log("Loaded...");
+    }  
 }
 
 window.onload = () => {
-    onLoad(); 
+    callOnLoad();
 };
+
+function callOnLoad() {
+    onLoad()
+        .then(() => console.log("Load success."))
+        .catch((error) => console.error("Error loading: ", error));
+}
 
 function hideSplash(){
     let splash = document.getElementById('splash');
     splash.style.visibility = 'hidden';
     if(won == 1){
         location.reload();
-        onLoad();
+        callOnLoad();
     }
 }
 
 function nextGuess(){
     if(guesses == 3){
         location.reload();
-        onLoad();
+        callOnLoad();
     }
     else{
         // Debugging only: console.log(cities.get(city, guesses)[guesses]);
@@ -68,6 +75,7 @@ function Splash(right){
         document.getElementById('splash-text').innerHTML = "You got the answer right.";
         document.getElementById('startButton').innerHTML = "Play again";
         document.getElementById('give-up').innerHTML = "";
+        // document.getElementById('theGuess').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_98g-kjCxQC58dPg8zioLJj1KaVmir1v0Fw&s";
         splash.style.height = "18rem";
         document.getElementById('next-steps').innerHTML = "Do not get complacent. Do not rest. I'm proud of you, even for the little wins.";
     }
@@ -87,8 +95,9 @@ function check(){
     var query = document.getElementById('test').value;
     console.log("Checking");
     console.log(query);
+    //console.log(city.toString().toLowerCase());
     var guessVar = "guess" + guesses;
-    if(query.toLowerCase() == cityL[rands].toString().toLowerCase()){
+    if(query.toString().toLowerCase() == cityL[rands].City.toString().toLowerCase()){
         document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
@@ -99,3 +108,17 @@ function check(){
     }
     nextGuess();
 }
+
+// document.addEventListener("keyup", (e) => {
+//     let pressedKey = String(e.key);
+//     if (pressedKey == "r") {
+//       location.reload();
+//       callOnLoad();
+//       return;
+//     }
+  
+//     if (pressedKey == "Enter") {
+//       check();
+//       return;
+//     }
+//   });
