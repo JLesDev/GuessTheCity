@@ -1,6 +1,7 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src imgur.com;"> -->
 </head>
 <body>
   <script type="module" src="./index.js"></script>
@@ -9,11 +10,30 @@
  
   <h1>Guess the city.</h1>
   <h2>No ads. No subscription.</h1>
+
   <div class="setSearch"> 
-    <input type="text" class="setSearch" id="test" placeholder="Enter answer..">
+     <!-- <input type="text" class="setSearch" id="test" placeholder="Enter answer..">  -->
+     <input type="text" id="test" placeholder="Enter answer..">
     <button onclick="check()" class="buttons">Check answer...</button>
   </div>
+
+  <div class="guesses"> 
+    <p class="float-text">Guesses</h1>
+      <div class = "box-div">
+        <div class = "box">
+          <p class = "guess-val"id="guess1"></p>
+        </div>
+        <div class = "box">
+          <p class = "guess-val"id="guess2"></p>
+        </div>
+        <div class = "box">
+          <p class = "guess-val"id="guess3"></p>
+        </div>
+          
+      </div>
+      
+  </div>
   
-<img src="/THIS IS HOBART.png" alt="Image is loading. Thanks for your patience." class="centre" id="theGuess">
+<img src="/THIS IS HOBART.png" referrerpolicy="no-referrer" alt="Image is loading. Thanks for your patience." class="centre" id="theGuess">
 </body>
 </html>
