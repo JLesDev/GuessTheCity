@@ -7,8 +7,7 @@ async function getCities(){
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
-    citiesList = citiesJSON["cities"];
-    return citiesList;
+    return  citiesJSON["cities"];
 }
 
 
