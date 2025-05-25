@@ -138,6 +138,7 @@ function check(){
     console.log(getCity());
     if(query.toLowerCase() === city.toLowerCase()){
         // alert("Correct");
+        document.getElementById(guessVar).innerHTML = "✅";
         won = 1;
         Splash("Correct");
         // location.reload();
@@ -145,7 +146,6 @@ function check(){
     }
     else{
         var guessVar = "guess" + guesses;
-        // document.getElementById('guess1').value = "❌";
         document.getElementById(guessVar).innerHTML = "❌";
         Splash("Wrong");
     }
