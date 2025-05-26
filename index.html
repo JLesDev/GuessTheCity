@@ -1,21 +1,26 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <title>Guess The City!</title>
+  <title>Guess The City</title>
 </head>
 <body>
   <script type="module" src="./index.js"></script>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="index.js"></script>
- 
+  
   <h1>Guess the city.</h1>
   <h2>No ads. No subscription.</h1>
 
-  <div class="setSearch"> 
-     <input type="text" id="test" placeholder="Enter answer..">
-    <button onclick="check()" class="buttons">Check answer...</button>
+  <div class="setSearch" id="divSearch"> 
+    <input type="text" id="test" placeholder="Enter answer...">
+    <div class ="float">
+      <button onclick="check()" class="buttons">Check answer...</button>
+      <button onclick="snapMap()" class="buttons">Advanced</button>
+    </div>
+    
   </div>
 
   <div class="guesses"> 
@@ -46,6 +51,9 @@
     <button id="startButton" onclick="hideSplash()"></button>
 
 </div>
-<img referrerpolicy="no-referrer" alt="Image is loading. Thanks for your patience." class="centre" id="theGuess">
+<div class="container">
+  <img referrerpolicy="no-referrer" alt="Image is loading. Thanks for your patience." class="centre" id="theGuess">
+<p id="centeredText"></p>
+</div>
 </body>
 </html>
