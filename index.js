@@ -186,17 +186,3 @@ function check(){
         }
     }
 }
-
-// document.addEventListener("keyup", (e) => {
-//     let pressedKey = String(e.key);
-//     // if (pressedKey == "r") {
-//     //   location.reload();
-//     //   callOnLoad();
-//     //   return;
-//     // }
-  
-//     if (pressedKey == "Enter") {
-//       check();
-//       break;
-//     }
-//   });
