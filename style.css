@@ -376,6 +376,17 @@ img{
     animation: fadeIn 1s ease-in forwards;
   }
   
+  #snapButton{
+    border: 3px solid rgb(244, 233, 215);
+    background-color: rgb(244, 233, 215);
+    color: rgb(0, 0, 0);
+  }
+  
+  #snapButton:hover{
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color:rgb(231, 182, 103);
+  }
   
   #startButton {
     font-size: 1em;
@@ -398,6 +409,32 @@ img{
   }
 
   #startButton:hover{
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color:rgb(231, 182, 103);
+  }
+
+    #copyButton {
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0.5rem auto;
+    padding: 0.2rem;
+  
+    cursor: pointer;
+    text-transform: uppercase;
+    /* color: #000000; */
+    border: 3px solid rgb(244, 233, 215);
+    background-color: rgb(244, 233, 215);
+    color: rgb(0, 0, 0);
+  
+    width: 6rem;
+    min-height: 2.5rem;
+  
+    /* border: 0; */
+    border-radius: 4px; 
+  }
+
+  #copyButton:hover{
     border: 3px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     background-color:rgb(231, 182, 103);
