@@ -1,21 +1,14 @@
 globalThis.won = 0;
 globalThis.city = "";
 globalThis.guesses = 0;
-
-// globalThis.cities = new Map;
-// cities.set('Brisbane', ['https://i.ibb.co/Q3zzC6fJ/brisbane1.png', 'https://i.ibb.co/8nMSBM6R/brisbane2.png', 'https://i.ibb.co/27Z5DPt4/brisbane3.png']);
-// cities.set('Hobart', ['https://i.ibb.co/FbDfFs7K/hobart1.png','https://i.ibb.co/LhsySHmF/hobart2.png','https://i.ibb.co/G4PJkKxP/hobart3.png']);
-// cities.set('Zhaoqing', ['https://i.ibb.co/tMxvBR0Y/zhaoqing1.png','https://i.ibb.co/fV9fLQ9R/zhaoqing2.png','https://i.ibb.co/N2mFL4vJ/zhaoqing3.png']);
-// cities.set('New York City', ['https://i.ibb.co/d0WsKfhw/newyork1.png','https://i.ibb.co/CphdpH5M/newyork2.png','https://i.ibb.co/htgtSDw/newyork3.png']);
-// cities.set('Adelaide', ['https://i.ibb.co/2YyKtSBj/adelaide1.png','https://i.ibb.co/pBdPL1Ym/adelaide2.png','https://i.ibb.co/67MHdGHY/adelaide3.png']);
-// cities.set('Perth', ['https://i.ibb.co/HLHCPjhL/perth1.png','https://i.ibb.co/nMdnq073/perth2.png','https://i.ibb.co/7xH4mRS2/perth3.png']);
-// cities.set('Dublin', ['https://i.ibb.co/JRKHQfVv/dublin1.png','https://i.ibb.co/r28dMr5f/dublin2.png','https://i.ibb.co/zHXNnCZQ/dublin3.png']);
+globalThis.snapped = false;
+globalThis.guessesText = [];
 
 async function getCities(){
-    const baseURL = window.location.origin;
-    const requestURL = baseURL + "/GuessTheCity/cities.json";
+    // const baseURL = window.location.origin;
+    // const requestURL = baseURL + "/GuessTheCity/cities.json";
     // For local hosting: 
-    // const requestURL = "http://127.0.0.1:5500/cities.json";
+    const requestURL = "http://127.0.0.1:5500/cities.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
@@ -64,6 +57,26 @@ function nextGuess(){
 
 }
 
+function snapMap(){
+    if(snapped == false){
+        document.getElementById('theGuess').style.height = "65vh";
+        document.getElementById('theGuess').style.width = "65vh";
+        document.getElementById('theGuess').style.opacity = "0.5";
+        document.getElementById('centeredText').innerHTML = "Guesses:<br>";
+        for(let i = 0; i < guessesText.length; i++){
+            document.getElementById('centeredText').innerHTML = document.getElementById('centeredText').innerHTML + guessesText[i] + "<br>";
+        }
+        snapped = true;
+    }
+    else{
+        document.getElementById('centeredText').innerHTML = "";
+        document.getElementById('theGuess').style.opacity = "1";
+        document.getElementById('theGuess').style.height = "auto";
+        document.getElementById('theGuess').style.width = "auto";
+        snapped = false;
+    }
+}
+
 function Splash(right){
     let splash = document.getElementById('splash');
     splash.style.visibility = 'visible';
@@ -77,7 +90,7 @@ function Splash(right){
     }
     else{
         splash.style.height = "20rem";
-        document.getElementById('splash-text').innerHTML = "You got the answer wrong.";
+        document.getElementById('splash-text').innerHTML = "<b>You got the answer wrong.</b>";
         document.getElementById('startButton').innerHTML = "Continue";
         document.getElementById('test').innerHTML = "";
         document.getElementById('test').placeholder = "Enter answer...";
@@ -93,6 +106,7 @@ function check(){
         callOnLoad();
     }
     var query = document.getElementById('test').value;
+    guessesText.push(query);
     console.log("Checking");
     console.log(query);
     //console.log(city.toString().toLowerCase());
@@ -116,14 +130,14 @@ function check(){
 
 // document.addEventListener("keyup", (e) => {
 //     let pressedKey = String(e.key);
-//     if (pressedKey == "r") {
-//       location.reload();
-//       callOnLoad();
-//       return;
-//     }
+//     // if (pressedKey == "r") {
+//     //   location.reload();
+//     //   callOnLoad();
+//     //   return;
+//     // }
   
 //     if (pressedKey == "Enter") {
 //       check();
-//       return;
+//       break;
 //     }
 //   });
