@@ -5,10 +5,10 @@ globalThis.snapped = false;
 globalThis.guessesText = [];
 
 async function getCities(){
-    // const baseURL = window.location.origin;
-    // const requestURL = baseURL + "/GuessTheCity/cities.json";
+    const baseURL = window.location.origin;
+    const requestURL = baseURL + "/GuessTheCity/cities.json";
     // For local hosting: 
-    const requestURL = "http://127.0.0.1:5500/cities.json";
+    //const requestURL = "http://127.0.0.1:5500/cities.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     let citiesJSON = await response.json();
