@@ -18,7 +18,7 @@
     <input type="text" id="test" placeholder="Enter answer...">
     <div class ="float">
       <button onclick="check()" class="buttons">Check answer...</button>
-      <button onclick="snapMap()" class="buttons">Advanced</button>
+      <button onclick="snapMap()" class="buttons" id="snapButton">Advanced</button>
     </div>
     
   </div>
@@ -42,14 +42,19 @@
     <p id="splash-text">
     </p>
 
-    <a href="https://google.com" id="give-up"></a>
+    <a href="#" onclick="Splash('giveUp')" id="give-up"></a>
     <hr>
     <h3>What to do now:</h3>
 
     <p id="next-steps">
     </p>
-    <button id="startButton" onclick="hideSplash()"></button>
-
+    <p id="copied">
+    </p>
+    <div class ="float">
+      <button id="startButton" onclick="hideSplash()"></button>
+      <div id="buttonHere"></div>
+      <!-- <button id="copyButton" onclick="copyResults()"></button> -->
+    </div>
 </div>
 <div class="container">
   <img referrerpolicy="no-referrer" alt="Image is loading. Thanks for your patience." class="centre" id="theGuess">
