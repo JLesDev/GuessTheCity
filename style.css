@@ -27,8 +27,47 @@
     padding: 10px;
     margin-bottom: 0.2rem;
     margin-top: 0.2rem;
+    font-weight: bold;
   }
   
+  .float{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: auto;
+    width: 200%;
+    border: 3px solid rgb(244, 233, 215);
+    padding: 10px;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    position: fixed; */
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 10px;
+  }
+
+  .container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+  #centeredText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* height: 100%; */
+  font-weight: 700;
+  /* padding: 12px 39px; */
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 2rem;
+}
+
   .setSearch{
     display: grid;
     justify-content: center;
@@ -40,10 +79,15 @@
     padding: 10px;
     margin-bottom: 0.2rem;
     margin-top: 0.2rem;
-    
 }
+/* #divSearch{
+  margin: auto;
+  width: 50%;
+} */
 img{
   border-radius: 3px;
+  height: auto;
+  width: auto;
 }
 
 /* .box{
@@ -59,11 +103,22 @@ img{
 } */
 
 .box{
-  width: 35px; 
+  /* width: 35px; 
   height: 35px; 
   border: 2px solid #f5e5d4; 
   margin-bottom: 10px;
+  align-items: center; */
+  display: flex; 
+  justify-content: center; 
   align-items: center;
+  width: 35px; 
+  height: 35px;
+  font-size: 1rem;
+  border: 2px solid #f5e5d4; 
+  text-align: center;
+  line-height: 1; 
+  padding-top: 5px;
+  padding-left: 1px;
 }
 
 .box-div{
@@ -83,8 +138,8 @@ img{
   align-items: center;
   margin-bottom: 0.2rem;
   margin-top: 0.2rem;
- 
 }
+
 .guess-val{
   margin: auto;
   margin-top: 2px;
@@ -98,10 +153,11 @@ img{
   font-weight: bold;
   text-align: center;
   font-size: 1.5rem;
-    color: rgb(244, 233, 215);
+  color: rgb(244, 233, 215);
 }
 
 .buttons{
+  cursor: pointer;
   border-radius: 3px;
   border: 3px solid rgb(244, 233, 215);
   background-color: rgb(244, 233, 215);
@@ -114,6 +170,7 @@ img{
   display: inline-block;
   font-size: 12px;
   font-weight: bold;
+  
 }
 
 .buttons:hover{
@@ -141,6 +198,7 @@ img{
   
   h1 {
     text-align: center;
+    margin-bottom: 15px;
     color: rgb(244, 233, 215);
   }
 
@@ -294,7 +352,7 @@ img{
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 1rem;
-    overflow: scroll;
+    overflow: hidden;
   
     text-align: center;
     line-height: 1.5;
