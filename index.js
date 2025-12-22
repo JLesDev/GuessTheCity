@@ -154,7 +154,6 @@ function check(){
     guessesText.push(query);
     console.log("Checking");
     console.log(query);
-    //console.log(city.toString().toLowerCase());
     var guessVar = "guess" + guesses;
     if(query.toString().toLowerCase() == cityL[rands].City.toString().toLowerCase()){
         document.getElementById(guessVar).innerHTML = "✅";
